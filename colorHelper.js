@@ -15,7 +15,7 @@ export const colorHelper = {
     //   secondary: "#3A3A37",
       header: "white",
       selected: "#F7BB0D",
-      unselected: "8E8E8F",
+      unselected: "#8E8E8F",
     },
     // card: "#959295",
     // white: "#FFFFFF",

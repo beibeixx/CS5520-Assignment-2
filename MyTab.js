@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, Button } from "react-native";
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Activities from "./Screens/Activities";
@@ -33,7 +33,9 @@ export default function MyTab() {
         tabBarActiveTintColor: colorHelper.text.selected,
         tabBarInactiveTintColor: colorHelper.text.unselected,
         tabBarLabel: ({ focused }) => {
-          let color = focused ? colorHelper.text.selected : colorHelper.text.default;
+          let color = focused
+            ? colorHelper.text.selected
+            : colorHelper.text.unselected;
           if (route.name === "Activities") {
             return <Text style={{ color, fontSize: 12 }}>Activities</Text>;
           }
@@ -41,7 +43,6 @@ export default function MyTab() {
             return <Text style={{ color, fontSize: 12 }}>Diet</Text>;
           }
         },
-
       })}
     >
       <Tab.Screen name="Activities" component={Activities} />
