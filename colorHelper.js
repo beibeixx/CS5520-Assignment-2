@@ -5,6 +5,7 @@ export const colorHelper = {
     //   start: "#77c8f0",
     //   end: "#7482bc",
       primary: "#363678",
+      page: "#AAA9C8",
     },
     // backgroundTransparent: {
     //   start: "rgba(119,200,240,0.8)",

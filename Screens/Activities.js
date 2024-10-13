@@ -2,12 +2,15 @@ import { StyleSheet, Text, View, Button } from "react-native";
 import React, { useState, useEffect, useContext } from "react";
 import ItemsList from "../Components/ItemsList";
 import { DataContext } from "../DataContext";
+import { colorHelper } from "../colorHelper";
 
 export default function Activities({ navigation }) {
   const { addActivity } = useContext(DataContext);
 
-  const handleAddActivity = () => {
-  };
+  function handleAddActivity() {
+    navigation.navigate("Add An Activity");
+  }
+
 
   useEffect(() => {
     navigation.setOptions({
@@ -16,10 +19,16 @@ export default function Activities({ navigation }) {
   }, []);
 
   return (
-    <View>
+    <View style={styles.container}>
       <ItemsList type="activities" />
     </View>
   );
 }
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 10,
+    backgroundColor: colorHelper.background.page,
+  }
+});

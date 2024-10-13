@@ -5,18 +5,18 @@ export const DataContext = createContext();
 
 export const DataProvider = ({ children }) => {
   const [activities, setActivities] = useState([]);
-  const [dietEntries, setDietEntries] = useState([]);
+  const [diets, setDiets] = useState([]);
 
   const addActivity = (activity) => {
     setActivities([...activities, activity]);
   };
 
-  const addDietEntry = (entry) => {
-    setDietEntries([...dietEntries, entry]);
+  const addDiet = (diet) => {
+    setDiets([...diets, diet]);
   };
 
   return (
-    <DataContext.Provider value={{ activities, dietEntries, addActivity, addDietEntry }}>
+    <DataContext.Provider value={{ activities, dietEntries: diets, addActivity, addDiet }}>
       {children}
     </DataContext.Provider>
   );

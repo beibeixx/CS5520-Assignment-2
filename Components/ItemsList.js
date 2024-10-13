@@ -4,9 +4,9 @@ import { DataContext } from '../DataContext';
 
 
 export default function ItemsList({ type }) {
-    const { activities, dietEntries } = useContext(DataContext);
+    const { activities, diets } = useContext(DataContext);
 
-    const data = type === 'activities' ? activities : dietEntries;
+    const data = type === 'activities' ? activities : diets;
 
   return (
     <FlatList
