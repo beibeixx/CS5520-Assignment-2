@@ -4,7 +4,7 @@ export const colorHelper = {
     background: {
     //   start: "#77c8f0",
     //   end: "#7482bc",
-      header: "#363678",
+      primary: "#363678",
     },
     // backgroundTransparent: {
     //   start: "rgba(119,200,240,0.8)",
@@ -14,6 +14,8 @@ export const colorHelper = {
     //   primary: "#33009F",
     //   secondary: "#3A3A37",
       header: "white",
+      selected: "#F7BB0D",
+      unselected: "8E8E8F",
     },
     // card: "#959295",
     // white: "#FFFFFF",
