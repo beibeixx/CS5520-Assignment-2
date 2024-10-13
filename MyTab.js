@@ -6,6 +6,8 @@ import Diet from "./Screens/Diet";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { colorHelper } from "./colorHelper";
+import Settings from "./Screens/Settings";
+import Ionicons from "@expo/vector-icons/Ionicons";
 
 const Tab = createBottomTabNavigator();
 
@@ -21,6 +23,9 @@ export default function MyTab() {
             return (
               <MaterialCommunityIcons name="food" size={size} color={color} />
             );
+          }
+          if (route.name === "Settings") {
+            return <Ionicons name="settings-sharp" size={size} color={color} />;
           }
         },
         headerStyle: {
@@ -42,11 +47,15 @@ export default function MyTab() {
           if (route.name === "Diet") {
             return <Text style={{ color, fontSize: 12 }}>Diet</Text>;
           }
+          if (route.name === "Settings") {
+            return <Text style={{ color, fontSize: 12 }}>Settings</Text>;
+          }
         },
       })}
     >
       <Tab.Screen name="Activities" component={Activities} />
       <Tab.Screen name="Diet" component={Diet} />
+      <Tab.Screen name="Settings" component={Settings} />
     </Tab.Navigator>
   );
 }
