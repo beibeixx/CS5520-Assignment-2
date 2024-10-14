@@ -7,6 +7,7 @@ import { colorHelper } from "../colorHelper";
 import { useTheme } from "../context/ThemeContext";
 import Inputs from "../Components/Inputs";
 import Labels from "../Components/Labels";
+import ButtonSet from "../Components/ButtonSet";
 
 const activityTypes = [
   { label: "Walking", value: "Walking" },
@@ -77,7 +78,6 @@ export default function AddActivity({ navigation }) {
         keyboardType="numeric"
         style={styles.input}
       />
-
       <Labels>Date *</Labels>
       <Inputs
         value={date ? date.toDateString() : ""}
@@ -96,11 +96,10 @@ export default function AddActivity({ navigation }) {
           }}
         />
       )}
-
-      <View style={styles.buttonContainer}>
+      <ButtonSet>
         <Button title="Cancel" onPress={() => navigation.goBack()} />
         <Button title="Save" onPress={handleSave} />
-      </View>
+      </ButtonSet>
     </View>
   );
 }
@@ -113,10 +112,5 @@ const styles = StyleSheet.create({
   dropdown: {
     backgroundColor: colorHelper.background.input,
     marginBottom: 10,
-  },
-  buttonContainer: {
-    flexDirection: "row",
-    justifyContent: "space-around",
-    paddingTop: 200,
   },
 });

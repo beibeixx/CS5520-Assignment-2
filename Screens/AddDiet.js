@@ -6,6 +6,7 @@ import { colorHelper } from "../colorHelper";
 import { useTheme } from "../context/ThemeContext";
 import Inputs from "../Components/Inputs";
 import Labels from "../Components/Labels";
+import ButtonSet from "../Components/ButtonSet";
 
 export default function AddDiet({ navigation }) {
   const [description, setDescription] = useState("");
@@ -78,10 +79,10 @@ export default function AddDiet({ navigation }) {
         />
       )}
 
-      <View style={styles.buttonContainer}>
+      <ButtonSet>
         <Button title="Cancel" onPress={() => navigation.goBack()} />
         <Button title="Save" onPress={handleSave} />
-      </View>
+      </ButtonSet>
     </View>
   );
 }
@@ -89,10 +90,6 @@ export default function AddDiet({ navigation }) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        padding: 10,
-      },
-    buttonContainer: {
-        flexDirection: 'row',
-        justifyContent: 'space-around',
+        padding: 20,
       },
 });
