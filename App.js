@@ -44,6 +44,7 @@ export default function App() {
                   backgroundColor: colorHelper.background.primary,
                 },
                 headerTintColor: colorHelper.text.header,
+                headerBackTitleVisible: false,
               })}
             />
             {/* Add Diet Entry Screen */}
@@ -56,6 +57,7 @@ export default function App() {
                   backgroundColor: colorHelper.background.primary,
                 },
                 headerTintColor: colorHelper.text.header,
+                headerBackTitleVisible: false,
               })}
             />
           </Stack.Navigator>
