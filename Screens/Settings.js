@@ -1,6 +1,11 @@
-import { StyleSheet, Text, View, Button } from "react-native";
+/**
+ * Settings.js
+ *
+ * This component displays the settings screen, currently featuring
+ * a button to toggle between light and dark themes.
+ */
+import { StyleSheet, View, Button } from "react-native";
 import React from "react";
-import { colorHelper } from "../Helper/colorHelper";
 import { useTheme } from "../context/ThemeContext";
 import { shapeHelper } from "../Helper/shapeHelper";
 
@@ -12,6 +17,7 @@ export default function Settings() {
       style={[styles.container, { backgroundColor: theme.backgroundColor }]}
     >
       <View style={styles.buttonContainer}>
+        {/* Button to toggle between light and dark themes */}
         <Button title="Toggle Theme" onPress={toggleTheme} />
       </View>
     </View>

@@ -1,22 +1,28 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
-import { useTheme } from '../context/ThemeContext';
-import { fontHelper } from '../Helper/fontHelper';
+/**
+ * Labels.js
+ *
+ * This component renders a text label with consistent styling.
+ * It uses the current theme for text color and predefined font styles.
+ */
+import { StyleSheet, Text, View } from "react-native";
+import React from "react";
+import { useTheme } from "../context/ThemeContext";
+import { fontHelper } from "../Helper/fontHelper";
 
-export default function Labels({children}) {
-    const { theme } = useTheme();
+export default function Labels({ children }) {
+  const { theme } = useTheme();
 
   return (
     <View>
-      <Text style={[styles.label, {color: theme.textColor}]}>{children}</Text>
+      <Text style={[styles.label, { color: theme.textColor }]}>{children}</Text>
     </View>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
-    label: {
-        fontSize: fontHelper.size.title,
-        marginBottom: 5,
-        fontWeight: fontHelper.style.bold,
-      },
-})
+  label: {
+    fontSize: fontHelper.size.title,
+    marginBottom: 5,
+    fontWeight: fontHelper.style.bold,
+  },
+});

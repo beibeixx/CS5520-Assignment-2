@@ -1,4 +1,10 @@
-import { StyleSheet, Text, View, TextInput, Button, Alert } from "react-native";
+/**
+ * AddActivity.js
+ *
+ * This component provides a form for adding new activities,
+ * including activity type, duration, and date.
+ */
+import { StyleSheet, View, Button, Alert } from "react-native";
 import React, { useState, useContext } from "react";
 import { DataContext } from "../context/DataContext";
 import DropDownPicker from "react-native-dropdown-picker";
@@ -10,6 +16,7 @@ import Labels from "../Components/Labels";
 import ButtonSet from "../Components/ButtonSet";
 import { shapeHelper } from "../Helper/shapeHelper";
 
+// Define available activity types
 const activityTypes = [
   { label: "Walking", value: "Walking" },
   { label: "Running", value: "Running" },
@@ -30,6 +37,9 @@ export default function AddActivity({ navigation }) {
 
   const { addActivity } = useContext(DataContext);
 
+  /**
+   * Handles saving the new activity
+   */
   const handleSave = () => {
     if (!activType || !duration || !date) {
       Alert.alert("Invalid Input", "Please fill all the required fields");
@@ -45,6 +55,7 @@ export default function AddActivity({ navigation }) {
     const isSpecial =
       (activType === "Running" || activType === "Weights") && durationNum > 60;
 
+    // Create new activity object
     const newActivity = {
       id: Date.now(),
       title: activType,
@@ -53,7 +64,7 @@ export default function AddActivity({ navigation }) {
       date: date.toISOString(),
       isSpecial,
     };
-
+    // Add the new activity and navigate back
     addActivity(newActivity);
     navigation.goBack();
   };

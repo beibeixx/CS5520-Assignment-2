@@ -1,8 +1,13 @@
-import { StyleSheet, Text, View, TextInput, Button, Alert } from "react-native";
+/**
+ * AddDiet.js
+ *
+ * This component provides a form for adding new diet entries,
+ * including description, calories, and date.
+ */
+import { StyleSheet, View, Button, Alert } from "react-native";
 import React, { useState, useContext } from "react";
 import { DataContext } from "../context/DataContext";
 import DateTimePicker from "@react-native-community/datetimepicker";
-import { colorHelper } from "../Helper/colorHelper";
 import { useTheme } from "../context/ThemeContext";
 import Inputs from "../Components/Inputs";
 import Labels from "../Components/Labels";
@@ -18,6 +23,9 @@ export default function AddDiet({ navigation }) {
 
   const { addDiet } = useContext(DataContext);
 
+  /**
+   * Handles saving the new diet entry
+   */
   const handleSave = () => {
     if (!description.trim() || !calories.trim()) {
       Alert.alert("Invalid Input", "Please fill all fields");
@@ -32,21 +40,25 @@ export default function AddDiet({ navigation }) {
 
     const isSpecial = caloriesNum > 800;
 
+    // Create new diet entry object
     const newDietEntry = {
-        id: Date.now(),
-        description,
+      id: Date.now(),
+      description,
       calories: caloriesNum,
       date: date.toISOString(),
       isSpecial,
-      type: 'diet',
+      type: "diet",
     };
 
+    // Add the new diet entry and navigate back
     addDiet(newDietEntry);
     navigation.goBack();
   };
 
   return (
-    <View style={[styles.container, { backgroundColor: theme.backgroundColor }]}>
+    <View
+      style={[styles.container, { backgroundColor: theme.backgroundColor }]}
+    >
       <Labels>Description *</Labels>
       <Inputs
         style={styles.input}
@@ -89,8 +101,8 @@ export default function AddDiet({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        padding: shapeHelper.padding.addPage,
-      },
+  container: {
+    flex: 1,
+    padding: shapeHelper.padding.addPage,
+  },
 });

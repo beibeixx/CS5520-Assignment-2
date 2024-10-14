@@ -1,4 +1,10 @@
-import { StyleSheet, Text, View, TextInput } from "react-native";
+/**
+ * Inputs.js
+ * 
+ * This component renders a customized TextInput with consistent styling.
+ * It accepts various props to control its behavior and appearance.
+ */
+import { StyleSheet, View, TextInput } from "react-native";
 import React from "react";
 import { colorHelper } from "../Helper/colorHelper";
 import { shapeHelper } from "../Helper/shapeHelper";

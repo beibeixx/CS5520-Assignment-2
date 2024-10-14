@@ -1,4 +1,9 @@
-import { StyleSheet, Text, View } from 'react-native'
+/**
+ * ThemeContext.js
+ * 
+ * This module creates a ThemeContext and ThemeProvider to manage the app's theme
+ * across the application, allowing for easy toggling between light and dark modes.
+ */
 import React, { createContext, useState, useContext } from 'react'
 import { colorHelper } from '../Helper/colorHelper';
 

@@ -1,3 +1,10 @@
+/**
+ * ItemsList.js
+ *
+ * This component renders a list of activities or diet entries
+ * using FlatList. It displays details such as title/description,
+ * date, duration/calories, and a warning icon for special items.
+ */
 import { StyleSheet, Text, View, FlatList } from "react-native";
 import React, { useContext } from "react";
 import { DataContext } from "../context/DataContext";
@@ -89,7 +96,6 @@ const styles = StyleSheet.create({
     width: 120,
     marginLeft: 10,
     alignItems: "center",
-
   },
   itemDetail: {
     fontSize: fontHelper.size.content,
