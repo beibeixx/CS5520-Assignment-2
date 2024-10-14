@@ -17,7 +17,7 @@ const activityTypes = [
 
 export default function AddActivity({ navigation }) {
   const [open, setOpen] = useState(false);
-  const [type, setType] = useState(null);
+  const [activType, setActivType] = useState(null);
   const [duration, setDuration] = useState("");
   const [date, setDate] = useState(new Date());
   const [showDatePicker, setShowDatePicker] = useState(false);
@@ -25,7 +25,7 @@ export default function AddActivity({ navigation }) {
   const { addActivity } = useContext(DataContext);
 
   const handleSave = () => {
-    if (!type || !duration || !date) {
+    if (!activType || !duration || !date) {
       Alert.alert("Invalid Input", "Please fill all the required fields");
       return;
     }
@@ -37,11 +37,12 @@ export default function AddActivity({ navigation }) {
     }
 
     const isSpecial =
-      (type === "Running" || type === "Weights") && durationNum > 60;
+      (activType === "Running" || activType === "Weights") && durationNum > 60;
 
     const newActivity = {
       id: Date.now(),
-      type,
+      title: activType,
+      type: "activities",
       duration: durationNum,
       date: date.toISOString(),
       isSpecial,
@@ -53,17 +54,17 @@ export default function AddActivity({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <Text>Activity *</Text>
+      <Text style={styles.label}>Activity *</Text>
       <DropDownPicker
         open={open}
-        value={type}
+        value={activType}
         items={activityTypes}
         setOpen={setOpen}
-        setValue={setType}
+        setValue={setActivType}
         style={styles.dropdown}
         placeholder="Select an Activity"
       />
-      <Text>Duration (min) *</Text>
+      <Text style={styles.label}>Duration (min) *</Text>
       <TextInput
         value={duration}
         onChangeText={setDuration}
@@ -71,7 +72,7 @@ export default function AddActivity({ navigation }) {
         style={styles.input}
       />
 
-      <Text>Date *</Text>
+      <Text style={styles.label}>Date *</Text>
       <TextInput
         value={date.toDateString()}
         onFocus={() => setShowDatePicker(true)}
@@ -109,10 +110,16 @@ const styles = StyleSheet.create({
   },
   input: {
     borderWidth: 1,
-    borderColor: "gray",
+    borderColor: colorHelper.background.primary,
     padding: 10,
     marginBottom: 10,
     backgroundColor: colorHelper.background.input,
+  },
+  label: {
+    fontSize: 16,
+    marginBottom: 5,
+    fontWeight: "bold",
+    color: colorHelper.background.primary,
   },
   buttonContainer: {
     flexDirection: "row",

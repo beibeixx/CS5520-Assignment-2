@@ -16,7 +16,7 @@ export const DataProvider = ({ children }) => {
   };
 
   return (
-    <DataContext.Provider value={{ activities, dietEntries: diets, addActivity, addDiet }}>
+    <DataContext.Provider value={{ activities, diets, addActivity, addDiet }}>
       {children}
     </DataContext.Provider>
   );

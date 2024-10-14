@@ -6,6 +6,7 @@ import MyTab from "./MyTab";
 import { DataProvider } from "./DataContext";
 import AddActivity from "./Screens/AddActivity";
 import { colorHelper } from "./colorHelper";
+import AddDiet from "./Screens/AddDiet";
 
 export default function App() {
   const Stack = createNativeStackNavigator();
@@ -23,6 +24,16 @@ export default function App() {
           <Stack.Screen
             name="Add An Activity"
             component={AddActivity}
+            options={({ route }) => ({
+              headerStyle: {
+                backgroundColor: colorHelper.background.primary,
+              },
+              headerTintColor: colorHelper.text.header,
+            })}
+          />
+          <Stack.Screen
+            name="Add A Diet Entry"
+            component={AddDiet}
             options={({ route }) => ({
               headerStyle: {
                 backgroundColor: colorHelper.background.primary,

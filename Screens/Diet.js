@@ -7,7 +7,9 @@ import { colorHelper } from "../colorHelper";
 export default function Diet({ navigation }) {
   const { addDiet } = useContext(DataContext);
 
-  const handleAddDiet = () => {};
+  function handleAddDiet() {
+    navigation.navigate("Add A Diet Entry");
+  }
 
   useEffect(() => {
     navigation.setOptions({
@@ -17,7 +19,7 @@ export default function Diet({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <ItemsList type="diets" />
+      <ItemsList type="diet" />
     </View>
   );
 }
