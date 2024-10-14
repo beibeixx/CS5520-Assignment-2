@@ -1,14 +1,16 @@
 import { StyleSheet, Text, View, TextInput, Button } from "react-native";
 import React, { useState, useContext } from "react";
-import { DataContext } from "../DataContext";
+import { DataContext } from "../context/DataContext";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { colorHelper } from "../colorHelper";
+import { useTheme } from "../context/ThemeContext";
 
 export default function AddDiet({ navigation }) {
   const [description, setDescription] = useState("");
   const [calories, setCalories] = useState("");
   const [date, setDate] = useState(new Date());
   const [showDatePicker, setShowDatePicker] = useState(false);
+  const { theme } = useTheme();
 
   const { addDiet } = useContext(DataContext);
 
@@ -40,7 +42,7 @@ export default function AddDiet({ navigation }) {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { backgroundColor: theme.backgroundColor }]}>
       <Text style={styles.label}>Description *</Text>
       <TextInput
         style={styles.input}
@@ -57,13 +59,14 @@ export default function AddDiet({ navigation }) {
 
       <Text style={styles.label}>Date *</Text>
       <TextInput
-        value={date.toDateString()}
+        value={date ? date.toDateString() : ""}
         onFocus={() => setShowDatePicker(true)}
+        onBlur={() => setShowDatePicker(false)}
         style={styles.input}
       />
       {showDatePicker && (
         <DateTimePicker
-          value={date}
+          value={date || new Date()}
           mode="date"
           display="inline"
           onChange={(event, selectedDate) => {

@@ -1,9 +1,10 @@
 import { StyleSheet, Text, View, TextInput, Button, Alert } from "react-native";
 import React, { useState, useContext } from "react";
-import { DataContext } from "../DataContext";
+import { DataContext } from "../context/DataContext";
 import DropDownPicker from "react-native-dropdown-picker";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { colorHelper } from "../colorHelper";
+import { useTheme } from "../context/ThemeContext";
 
 const activityTypes = [
   { label: "Walking", value: "Walking" },
@@ -21,6 +22,7 @@ export default function AddActivity({ navigation }) {
   const [duration, setDuration] = useState("");
   const [date, setDate] = useState(new Date());
   const [showDatePicker, setShowDatePicker] = useState(false);
+  const { theme } = useTheme();
 
   const { addActivity } = useContext(DataContext);
 
@@ -53,7 +55,7 @@ export default function AddActivity({ navigation }) {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { backgroundColor: theme.backgroundColor }]}>
       <Text style={styles.label}>Activity *</Text>
       <DropDownPicker
         open={open}
@@ -74,13 +76,14 @@ export default function AddActivity({ navigation }) {
 
       <Text style={styles.label}>Date *</Text>
       <TextInput
-        value={date.toDateString()}
+        value={date ? date.toDateString() : ""}
         onFocus={() => setShowDatePicker(true)}
+        onBlur={() => setShowDatePicker(false)}
         style={styles.input}
       />
       {showDatePicker && (
         <DateTimePicker
-          value={date}
+          value={date || new Date()}
           mode="date"
           display="inline"
           onChange={(event, selectedDate) => {

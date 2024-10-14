@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, FlatList } from "react-native";
 import React, { useContext }  from "react";
-import { DataContext } from '../DataContext';
+import { DataContext } from '../context/DataContext';
 import AntDesign from '@expo/vector-icons/AntDesign';
 
 
