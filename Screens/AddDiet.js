@@ -2,11 +2,12 @@ import { StyleSheet, Text, View, TextInput, Button, Alert } from "react-native";
 import React, { useState, useContext } from "react";
 import { DataContext } from "../context/DataContext";
 import DateTimePicker from "@react-native-community/datetimepicker";
-import { colorHelper } from "../colorHelper";
+import { colorHelper } from "../Helper/colorHelper";
 import { useTheme } from "../context/ThemeContext";
 import Inputs from "../Components/Inputs";
 import Labels from "../Components/Labels";
 import ButtonSet from "../Components/ButtonSet";
+import { shapeHelper } from "../Helper/shapeHelper";
 
 export default function AddDiet({ navigation }) {
   const [description, setDescription] = useState("");
@@ -90,6 +91,6 @@ export default function AddDiet({ navigation }) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        padding: 20,
+        padding: shapeHelper.padding.addPage,
       },
 });

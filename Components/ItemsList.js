@@ -2,7 +2,9 @@ import { StyleSheet, Text, View, FlatList } from "react-native";
 import React, { useContext } from "react";
 import { DataContext } from "../context/DataContext";
 import { Ionicons } from "@expo/vector-icons";
-import { colorHelper } from "../colorHelper";
+import { colorHelper } from "../Helper/colorHelper";
+import { fontHelper } from "../Helper/fontHelper";
+import { shapeHelper } from "../Helper/shapeHelper";
 
 export default function ItemsList({ type }) {
   const { activities, diets } = useContext(DataContext);
@@ -50,15 +52,15 @@ export default function ItemsList({ type }) {
 
 const styles = StyleSheet.create({
   listContainer: {
-    padding: 10,
+    padding: shapeHelper.padding.listMain,
   },
   item: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
     backgroundColor: colorHelper.background.primary,
-    borderRadius: 5,
-    padding: 10,
+    borderRadius: shapeHelper.borderRadius.mid,
+    padding: shapeHelper.padding.listMain,
     marginBottom: 15,
   },
   itemLeft: {
@@ -70,32 +72,34 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   itemTitle: {
-    color: "white",
-    fontSize: 16,
-    fontWeight: "bold",
+    color: colorHelper.text.header,
+    fontSize: fontHelper.size.title,
+    fontWeight: fontHelper.style.bold,
     marginRight: 10,
   },
   itemDate: {
-    fontSize: 14,
-    fontWeight: "bold",
+    fontSize: fontHelper.size.content,
+    fontWeight: fontHelper.style.bold,
   },
   itemDateContainer: {
     backgroundColor: colorHelper.text.header,
-    padding: 5,
+    padding: shapeHelper.padding.listInside,
     marginRight: 5,
-    borderRadius: 2,
+    borderRadius: shapeHelper.borderRadius.small,
     width: 120,
     marginLeft: 10,
+    alignItems: "center",
+
   },
   itemDetail: {
-    fontSize: 14,
-    fontWeight: "bold",
+    fontSize: fontHelper.size.content,
+    fontWeight: fontHelper.style.bold,
   },
   itemDetailContainer: {
     alignItems: "center",
     backgroundColor: colorHelper.text.header,
-    padding: 5,
-    borderRadius: 2,
+    padding: shapeHelper.padding.listInside,
+    borderRadius: shapeHelper.borderRadius.small,
     width: 70,
   },
 });

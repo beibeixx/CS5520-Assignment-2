@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View, TextInput } from "react-native";
 import React from "react";
-import { colorHelper } from "../colorHelper";
+import { colorHelper } from "../Helper/colorHelper";
+import { shapeHelper } from "../Helper/shapeHelper";
 
 export default function Inputs({
   value,
@@ -27,9 +28,9 @@ const styles = StyleSheet.create({
   input: {
     borderWidth: 1.5,
     borderColor: colorHelper.background.primary,
-    padding: 10,
+    padding: shapeHelper.padding.mainPage,
     marginBottom: 10,
     backgroundColor: colorHelper.background.input,
-    borderRadius: 10,
+    borderRadius: shapeHelper.borderRadius.big,
   },
 });

@@ -2,8 +2,9 @@ import { StyleSheet, Text, View, Button } from "react-native";
 import React, { useState, useEffect, useContext } from "react";
 import ItemsList from "../Components/ItemsList";
 import { DataContext } from "../context/DataContext";
-import { colorHelper } from "../colorHelper";
+import { colorHelper } from "../Helper/colorHelper";
 import { useTheme } from "../context/ThemeContext";
+import { shapeHelper } from "../Helper/shapeHelper";
 
 export default function Activities({ navigation }) {
   const { theme } = useTheme();
@@ -29,6 +30,6 @@ export default function Activities({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 10,
+    padding: shapeHelper.padding.mainPage,
   }
 });

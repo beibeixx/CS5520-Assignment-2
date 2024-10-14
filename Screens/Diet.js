@@ -1,9 +1,8 @@
 import { StyleSheet, Text, View, Button } from "react-native";
 import React, { useState, useEffect, useContext } from "react";
 import ItemsList from "../Components/ItemsList";
-import { DataContext } from "../context/DataContext";
-import { colorHelper } from "../colorHelper";
 import { useTheme } from "../context/ThemeContext";
+import { shapeHelper } from "../Helper/shapeHelper";
 
 export default function Diet({ navigation }) {
   const { theme } = useTheme();
@@ -28,6 +27,6 @@ export default function Diet({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 10,
+    padding: shapeHelper.padding.mainPage,
   },
 });

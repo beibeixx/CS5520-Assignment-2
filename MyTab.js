@@ -5,7 +5,7 @@ import Activities from "./Screens/Activities";
 import Diet from "./Screens/Diet";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
-import { colorHelper } from "./colorHelper";
+import { colorHelper } from "./Helper/colorHelper";
 import Settings from "./Screens/Settings";
 import Ionicons from "@expo/vector-icons/Ionicons";
 

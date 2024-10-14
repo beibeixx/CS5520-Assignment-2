@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React, { createContext, useState, useContext } from 'react'
-import { colorHelper } from '../colorHelper';
+import { colorHelper } from '../Helper/colorHelper';
 
 const ThemeContext = createContext();
 

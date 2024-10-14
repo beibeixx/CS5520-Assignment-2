@@ -3,11 +3,12 @@ import React, { useState, useContext } from "react";
 import { DataContext } from "../context/DataContext";
 import DropDownPicker from "react-native-dropdown-picker";
 import DateTimePicker from "@react-native-community/datetimepicker";
-import { colorHelper } from "../colorHelper";
+import { colorHelper } from "../Helper/colorHelper";
 import { useTheme } from "../context/ThemeContext";
 import Inputs from "../Components/Inputs";
 import Labels from "../Components/Labels";
 import ButtonSet from "../Components/ButtonSet";
+import { shapeHelper } from "../Helper/shapeHelper";
 
 const activityTypes = [
   { label: "Walking", value: "Walking" },
@@ -107,7 +108,7 @@ export default function AddActivity({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
+    padding: shapeHelper.padding.addPage,
   },
   dropdown: {
     backgroundColor: colorHelper.background.input,
