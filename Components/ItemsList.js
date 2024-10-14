@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
     padding: shapeHelper.padding.listInside,
     marginRight: 5,
     borderRadius: shapeHelper.borderRadius.small,
-    width: 120,
+    width: 130,
     marginLeft: 10,
     alignItems: "center",
   },
