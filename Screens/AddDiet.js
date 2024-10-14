@@ -1,14 +1,16 @@
-import { StyleSheet, Text, View, TextInput, Button } from "react-native";
+import { StyleSheet, Text, View, TextInput, Button, Alert } from "react-native";
 import React, { useState, useContext } from "react";
 import { DataContext } from "../context/DataContext";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { colorHelper } from "../colorHelper";
 import { useTheme } from "../context/ThemeContext";
+import Inputs from "../Components/Inputs";
+import Labels from "../Components/Labels";
 
 export default function AddDiet({ navigation }) {
   const [description, setDescription] = useState("");
   const [calories, setCalories] = useState("");
-  const [date, setDate] = useState(new Date());
+  const [date, setDate] = useState(null);
   const [showDatePicker, setShowDatePicker] = useState(false);
   const { theme } = useTheme();
 
@@ -43,22 +45,22 @@ export default function AddDiet({ navigation }) {
 
   return (
     <View style={[styles.container, { backgroundColor: theme.backgroundColor }]}>
-      <Text style={styles.label}>Description *</Text>
-      <TextInput
+      <Labels>Description *</Labels>
+      <Inputs
         style={styles.input}
         value={description}
         onChangeText={setDescription}
       />
-      <Text style={styles.label}>Calories *</Text>
-      <TextInput
+      <Labels>Calories *</Labels>
+      <Inputs
         style={styles.input}
         value={calories}
         onChangeText={setCalories}
         keyboardType="numeric"
       />
 
-      <Text style={styles.label}>Date *</Text>
-      <TextInput
+      <Labels>Date *</Labels>
+      <Inputs
         value={date ? date.toDateString() : ""}
         onFocus={() => setShowDatePicker(true)}
         onBlur={() => setShowDatePicker(false)}
@@ -66,7 +68,7 @@ export default function AddDiet({ navigation }) {
       />
       {showDatePicker && (
         <DateTimePicker
-          value={date || new Date()}
+          value={new Date()}
           mode="date"
           display="inline"
           onChange={(event, selectedDate) => {
@@ -88,24 +90,9 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         padding: 10,
-        backgroundColor: colorHelper.background.page,
       },
     buttonContainer: {
         flexDirection: 'row',
         justifyContent: 'space-around',
       },
-      input: {
-        borderWidth: 1,
-        borderColor: colorHelper.background.primary,
-        padding: 10,
-        marginBottom: 10,
-        backgroundColor: colorHelper.background.input,
-      },
-      label: {
-        fontSize: 16,
-        marginBottom: 5,
-        fontWeight: "bold",
-        color: colorHelper.background.primary,
-      },
-
 });

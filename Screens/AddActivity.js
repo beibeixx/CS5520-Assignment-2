@@ -5,6 +5,8 @@ import DropDownPicker from "react-native-dropdown-picker";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { colorHelper } from "../colorHelper";
 import { useTheme } from "../context/ThemeContext";
+import Inputs from "../Components/Inputs";
+import Labels from "../Components/Labels";
 
 const activityTypes = [
   { label: "Walking", value: "Walking" },
@@ -20,7 +22,7 @@ export default function AddActivity({ navigation }) {
   const [open, setOpen] = useState(false);
   const [activType, setActivType] = useState(null);
   const [duration, setDuration] = useState("");
-  const [date, setDate] = useState(new Date());
+  const [date, setDate] = useState(null);
   const [showDatePicker, setShowDatePicker] = useState(false);
   const { theme } = useTheme();
 
@@ -55,8 +57,10 @@ export default function AddActivity({ navigation }) {
   };
 
   return (
-    <View style={[styles.container, { backgroundColor: theme.backgroundColor }]}>
-      <Text style={styles.label}>Activity *</Text>
+    <View
+      style={[styles.container, { backgroundColor: theme.backgroundColor }]}
+    >
+      <Labels>Activity *</Labels>
       <DropDownPicker
         open={open}
         value={activType}
@@ -66,16 +70,16 @@ export default function AddActivity({ navigation }) {
         style={styles.dropdown}
         placeholder="Select an Activity"
       />
-      <Text style={styles.label}>Duration (min) *</Text>
-      <TextInput
+      <Labels>Duration (min) *</Labels>
+      <Inputs
         value={duration}
         onChangeText={setDuration}
         keyboardType="numeric"
         style={styles.input}
       />
 
-      <Text style={styles.label}>Date *</Text>
-      <TextInput
+      <Labels>Date *</Labels>
+      <Inputs
         value={date ? date.toDateString() : ""}
         onFocus={() => setShowDatePicker(true)}
         onBlur={() => setShowDatePicker(false)}
@@ -83,7 +87,7 @@ export default function AddActivity({ navigation }) {
       />
       {showDatePicker && (
         <DateTimePicker
-          value={date || new Date()}
+          value={new Date()}
           mode="date"
           display="inline"
           onChange={(event, selectedDate) => {
@@ -104,28 +108,15 @@ export default function AddActivity({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 10,
-    backgroundColor: colorHelper.background.page,
+    padding: 20,
   },
   dropdown: {
     backgroundColor: colorHelper.background.input,
     marginBottom: 10,
   },
-  input: {
-    borderWidth: 1,
-    borderColor: colorHelper.background.primary,
-    padding: 10,
-    marginBottom: 10,
-    backgroundColor: colorHelper.background.input,
-  },
-  label: {
-    fontSize: 16,
-    marginBottom: 5,
-    fontWeight: "bold",
-    color: colorHelper.background.primary,
-  },
   buttonContainer: {
     flexDirection: "row",
     justifyContent: "space-around",
+    paddingTop: 200,
   },
 });
