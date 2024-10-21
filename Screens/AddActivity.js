@@ -94,7 +94,12 @@ export default function AddActivity({ navigation }) {
       <Inputs
         value={date ? date.toDateString() : ""}
         onFocus={() => setShowDatePicker(true)}
-        onBlur={() => setShowDatePicker(false)}
+        onBlur={() => {
+          setShowDatePicker(false);
+          if (!date) {
+            setDate(new Date());
+          }
+        }}
         style={styles.input}
       />
       {showDatePicker && (
