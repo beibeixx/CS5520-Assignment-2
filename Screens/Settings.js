@@ -8,6 +8,7 @@ import { StyleSheet, View, Button } from "react-native";
 import React from "react";
 import { useTheme } from "../context/ThemeContext";
 import { shapeHelper } from "../Helper/shapeHelper";
+import PressableButton from "../Components/PressableButton";
 
 export default function Settings() {
   const { toggleTheme, theme } = useTheme();
@@ -18,7 +19,7 @@ export default function Settings() {
     >
       <View style={styles.buttonContainer}>
         {/* Button to toggle between light and dark themes */}
-        <Button title="Toggle Theme" onPress={toggleTheme} />
+        <PressableButton title="Toggle Theme" onPress={toggleTheme} />
       </View>
     </View>
   );

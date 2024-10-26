@@ -9,6 +9,9 @@ import React, { useEffect } from "react";
 import ItemsList from "../Components/ItemsList";
 import { useTheme } from "../context/ThemeContext";
 import { shapeHelper } from "../Helper/shapeHelper";
+import PressableButton from "../Components/PressableButton";
+import Ionicons from '@expo/vector-icons/Ionicons';
+import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 
 export default function Activities({ navigation }) {
   const { theme } = useTheme();
@@ -23,7 +26,12 @@ export default function Activities({ navigation }) {
 
   useEffect(() => {
     navigation.setOptions({
-      headerRight: () => <Button title="Add" onPress={handleAddActivity} />,
+      headerRight: () => (
+        <PressableButton onPress={handleAddActivity} componentStyle={styles.icon}>
+          <Ionicons name="add-outline" size={24} color="white" />
+          <FontAwesome5 name="running" size={24} color="white" />
+          </PressableButton>
+      ),
     });
   }, []);
 
@@ -43,4 +51,8 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: shapeHelper.padding.mainPage,
   },
+  icon: {
+    flexDirection: 'row',
+    gap: 2,
+  }
 });

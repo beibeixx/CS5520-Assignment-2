@@ -13,6 +13,7 @@ import Inputs from "../Components/Inputs";
 import Labels from "../Components/Labels";
 import ButtonSet from "../Components/ButtonSet";
 import { shapeHelper } from "../Helper/shapeHelper";
+import PressableButton from "../Components/PressableButton";
 
 export default function AddDiet({ navigation }) {
   const [description, setDescription] = useState("");
@@ -98,8 +99,8 @@ export default function AddDiet({ navigation }) {
       )}
 
       <ButtonSet>
-        <Button title="Cancel" onPress={() => navigation.goBack()} />
-        <Button title="Save" onPress={handleSave} />
+        <PressableButton title="Cancel" onPress={() => navigation.goBack()} />
+        <PressableButton title="Save" onPress={handleSave} />
       </ButtonSet>
     </View>
   );

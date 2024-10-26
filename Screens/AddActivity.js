@@ -15,6 +15,7 @@ import Inputs from "../Components/Inputs";
 import Labels from "../Components/Labels";
 import ButtonSet from "../Components/ButtonSet";
 import { shapeHelper } from "../Helper/shapeHelper";
+import PressableButton from "../Components/PressableButton";
 
 // Define available activity types
 const activityTypes = [
@@ -46,8 +47,7 @@ export default function AddActivity({ navigation }) {
       return;
     }
 
-    const durationNum = parseInt(duration);
-    if (isNaN(durationNum) || durationNum <= 0) {
+    if (!duration.match(/^\d+$/) || parseInt(duration) <= 0) {
       Alert.alert("Invalid Input", "Duration must be a positive number");
       return;
     }
@@ -87,7 +87,7 @@ export default function AddActivity({ navigation }) {
       <Inputs
         value={duration}
         onChangeText={setDuration}
-        keyboardType="numeric"
+        keyboardType="n umeric"
         style={styles.input}
       />
       <Labels>Date *</Labels>
@@ -114,8 +114,8 @@ export default function AddActivity({ navigation }) {
         />
       )}
       <ButtonSet>
-        <Button title="Cancel" onPress={() => navigation.goBack()} />
-        <Button title="Save" onPress={handleSave} />
+        <PressableButton title="Cancel" onPress={() => navigation.goBack()} />
+        <PressableButton title="Save" onPress={handleSave} />
       </ButtonSet>
     </View>
   );
