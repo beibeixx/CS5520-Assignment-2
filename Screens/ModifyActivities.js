@@ -121,9 +121,20 @@ export default function ModifyActivities({ navigation, route }) {
   };
 
   function handleDelete() {
-    // Alert.alert("Detele");
-    // deleteFromDB(currentActivity.id, "activities");
-    // navigation.goBack();
+    Alert.alert("Delete", "Are you sure you want to delete this item?", [
+      { text: "No" },
+      {
+        text: "Yes",
+        onPress: async () => {
+          try {
+            await deleteFromDB(currentActivity.id, "activities");
+            navigation.goBack();
+          } catch (error) {
+            console.error("Error deleting data:", error);
+          }
+        },
+      },
+    ]);
   }
 
   return (
