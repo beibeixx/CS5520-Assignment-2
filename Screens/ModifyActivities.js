@@ -22,6 +22,8 @@ import {
 } from "../Firebase/firestoreHelper";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 import Checkbox from "expo-checkbox";
+import Ionicons from "@expo/vector-icons/Ionicons";
+import { fontHelper } from "../Helper/fontHelper";
 
 // Define available activity types
 const activityTypes = [
@@ -56,7 +58,7 @@ export default function ModifyActivities({ navigation, route }) {
       headerRight: isEditMode
         ? () => (
             <PressableButton onPress={handleDelete}>
-              <FontAwesome5 name="trash" size={24} color="white" />
+              <Ionicons name="trash-outline" size={24} color="white" />
             </PressableButton>
           )
         : undefined,
@@ -182,28 +184,30 @@ export default function ModifyActivities({ navigation, route }) {
         />
       )}
 
-      {isEditMode && currentActivity.isSpecial && (
-        <View style={styles.checkboxContainer}>
-          <Checkbox value={isChecked} onValueChange={setIsChecked} />
-          <Text style={styles.checkboxText}>
-            This item is marked as special. Select the checkbox if you would
-            like to approve it.
-          </Text>
-        </View>
-      )}
+      <View style={styles.bottomContainer}>
+        {isEditMode && currentActivity.isSpecial && (
+          <View style={styles.checkboxContainer}>
+            <Text style={styles.checkboxText}>
+              This item is marked as special. Select the checkbox if you would
+              like to approve it.
+            </Text>
+            <Checkbox value={isChecked} onValueChange={setIsChecked} />
+          </View>
+        )}
 
-      <ButtonSet>
-        <PressableButton
-          title="Cancel"
-          onPress={() => navigation.goBack()}
-          componentStyle={styles.cancelButton}
-        />
-        <PressableButton
-          title="Save"
-          onPress={handleSave}
-          componentStyle={styles.saveButton}
-        />
-      </ButtonSet>
+        <ButtonSet>
+          <PressableButton
+            title="Cancel"
+            onPress={() => navigation.goBack()}
+            componentStyle={styles.cancelButton}
+          />
+          <PressableButton
+            title="Save"
+            onPress={handleSave}
+            componentStyle={styles.saveButton}
+          />
+        </ButtonSet>
+      </View>
     </View>
   );
 }
@@ -226,11 +230,16 @@ const styles = StyleSheet.create({
     backgroundColor: colorHelper.button.save,
   },
   checkboxContainer: {
-    marginVertical: 20,
     flexDirection: "row",
-    gap: 8,
+    gap: 20,
+    paddingHorizontal: 5,
   },
   checkboxText: {
-    paddingRight: 10,
+    color: colorHelper.text.updateSpecial,
+    fontWeight: fontHelper.style.bold,
+  },
+  bottomContainer:{
+    paddingTop:250,
+    gap: 10,
   },
 });

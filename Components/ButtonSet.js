@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
   buttonContainer: {
     flexDirection: "row",
     justifyContent: "space-around",
-    paddingTop: 200,
     gap: 20,
+    padding: 15,
   },
 });
