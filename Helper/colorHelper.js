@@ -20,4 +20,9 @@ export const colorHelper = {
     selected: "#F7BB0D", // Color for selected text or elements
     unselected: "#8E8E8F", // Color for unselected text or elements
   },
+  button: {
+    cancel: "#9B0A5B", // Color for cancel button
+    save: "#363678", // Color for save button
+    text: "white",
+  },
 };

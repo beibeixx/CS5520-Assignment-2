@@ -114,8 +114,8 @@ export default function AddActivity({ navigation }) {
         />
       )}
       <ButtonSet>
-        <PressableButton title="Cancel" onPress={() => navigation.goBack()} />
-        <PressableButton title="Save" onPress={handleSave} />
+        <PressableButton title="Cancel" onPress={() => navigation.goBack()} componentStyle={styles.cancelButton}/>
+        <PressableButton title="Save" onPress={handleSave} componentStyle={styles.saveButton} />
       </ButtonSet>
     </View>
   );
@@ -130,4 +130,10 @@ const styles = StyleSheet.create({
     backgroundColor: colorHelper.background.input,
     marginBottom: 10,
   },
+  cancelButton: {
+    backgroundColor: colorHelper.button.cancel,
+  },
+  saveButton: {
+    backgroundColor: colorHelper.button.save,
+  }
 });

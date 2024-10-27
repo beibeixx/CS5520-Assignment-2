@@ -14,6 +14,7 @@ import Labels from "../Components/Labels";
 import ButtonSet from "../Components/ButtonSet";
 import { shapeHelper } from "../Helper/shapeHelper";
 import PressableButton from "../Components/PressableButton";
+import { colorHelper } from "../Helper/colorHelper";
 
 export default function AddDiet({ navigation }) {
   const [description, setDescription] = useState("");
@@ -99,8 +100,8 @@ export default function AddDiet({ navigation }) {
       )}
 
       <ButtonSet>
-        <PressableButton title="Cancel" onPress={() => navigation.goBack()} />
-        <PressableButton title="Save" onPress={handleSave} />
+        <PressableButton title="Cancel" onPress={() => navigation.goBack()} componentStyle={styles.cancelButton} />
+        <PressableButton title="Save" onPress={handleSave} componentStyle={styles.saveButton} />
       </ButtonSet>
     </View>
   );
@@ -110,5 +111,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: shapeHelper.padding.addPage,
+  },
+  cancelButton: {
+    backgroundColor: colorHelper.button.cancel,
+  },
+  saveButton: {
+    backgroundColor: colorHelper.button.save,
   },
 });

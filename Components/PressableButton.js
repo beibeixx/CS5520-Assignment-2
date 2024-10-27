@@ -22,29 +22,27 @@ export default function PressableButton({
         borderless: false,
       }}
     >
-      {children}
-    </Pressable>
+      <Text style={styles.text}>{title || children}</Text>
+      </Pressable>
   );
 }
 
 const styles = StyleSheet.create({
   button: {
+    flex:1,
     // backgroundColor: '#2196F3',
     paddingVertical: 12,
     paddingHorizontal: 16,
     borderRadius: 4,
-    // alignItems: 'center',
-    // justifyContent: 'center',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
-  text: {
-    color: "white",
-    fontSize: 16,
-    fontWeight: "bold",
-  },
+
+text: {
+  color: colorHelper.button.text,
+},
   pressedStyle: {
     // backgroundColor: '#1976D2',
   },
-  pressedText: {
-    color: "rgba(255, 255, 255, 0.8)",
-  },
+
 });
