@@ -30,9 +30,8 @@ export default function PressableButton({
 const styles = StyleSheet.create({
   button: {
     flex:1,
-    // backgroundColor: '#2196F3',
-    paddingVertical: 12,
-    paddingHorizontal: 16,
+    paddingVertical: 10,
+    paddingHorizontal: 10,
     borderRadius: 4,
     alignItems: 'center',
     justifyContent: 'center',
