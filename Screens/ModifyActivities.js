@@ -15,7 +15,11 @@ import Labels from "../Components/Labels";
 import ButtonSet from "../Components/ButtonSet";
 import { shapeHelper } from "../Helper/shapeHelper";
 import PressableButton from "../Components/PressableButton";
-import { updateInDB, writeToDB } from "../Firebase/firestoreHelper";
+import {
+  deleteFromDB,
+  updateInDB,
+  writeToDB,
+} from "../Firebase/firestoreHelper";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 import Checkbox from "expo-checkbox";
 
@@ -74,8 +78,8 @@ export default function ModifyActivities({ navigation, route }) {
     }
 
     const isSpecial =
-      ((activType === "Running" || activType === "Weights") &&
-      durationNum > 60 ) &&
+      (activType === "Running" || activType === "Weights") &&
+      durationNum > 60 &&
       (isEditMode ? !isChecked : true);
 
     // Create new activity object
@@ -88,12 +92,39 @@ export default function ModifyActivities({ navigation, route }) {
       isSpecial,
       updateAt: new Date().toISOString(),
     };
+
     // Add new /update the activity and navigate back
-    isEditMode ? updateInDB(newActivity, currentActivity.id, "activities") : writeToDB(newActivity, "activities");
-    navigation.goBack();
+    isEditMode
+      ? Alert.alert(
+          "Important",
+          "Are you sure you want to save these changes?",
+          [
+            { text: "No" },
+            {
+              text: "Yes",
+              onPress: async () => {
+                try {
+                  await updateInDB(
+                    newActivity,
+                    currentActivity.id,
+                    "activities"
+                  );
+                  navigation.goBack();
+                } catch (error) {
+                  console.error("Error saving data:", error);
+                }
+              },
+            },
+          ]
+        )
+      : [writeToDB(newActivity, "activities"), navigation.goBack()];
   };
 
-  function handleDelete() {}
+  function handleDelete() {
+    // Alert.alert("Detele");
+    // deleteFromDB(currentActivity.id, "activities");
+    // navigation.goBack();
+  }
 
   return (
     <View
@@ -142,11 +173,11 @@ export default function ModifyActivities({ navigation, route }) {
 
       {isEditMode && currentActivity.isSpecial && (
         <View style={styles.checkboxContainer}>
-          <Checkbox
-            value={isChecked}
-            onValueChange={setIsChecked}
-          />
-          <Text style={styles.checkboxText}>This item is marked as special. Select the checkbox if you would like to approve it.</Text>
+          <Checkbox value={isChecked} onValueChange={setIsChecked} />
+          <Text style={styles.checkboxText}>
+            This item is marked as special. Select the checkbox if you would
+            like to approve it.
+          </Text>
         </View>
       )}
 
@@ -185,10 +216,10 @@ const styles = StyleSheet.create({
   },
   checkboxContainer: {
     marginVertical: 20,
-    flexDirection: 'row',
+    flexDirection: "row",
     gap: 8,
   },
-  checkboxText:{
+  checkboxText: {
     paddingRight: 10,
   },
 });
