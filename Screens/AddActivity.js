@@ -16,6 +16,9 @@ import Labels from "../Components/Labels";
 import ButtonSet from "../Components/ButtonSet";
 import { shapeHelper } from "../Helper/shapeHelper";
 import PressableButton from "../Components/PressableButton";
+import { writeToDB } from "../Firebase/firestoreHelper";
+import { database } from "../Firebase/fireBaseSetup";
+
 
 // Define available activity types
 const activityTypes = [
@@ -36,8 +39,6 @@ export default function AddActivity({ navigation }) {
   const [showDatePicker, setShowDatePicker] = useState(false);
   const { theme } = useTheme();
 
-  const { addActivity } = useContext(DataContext);
-
   /**
    * Handles saving the new activity
    */
@@ -46,8 +47,8 @@ export default function AddActivity({ navigation }) {
       Alert.alert("Invalid Input", "Please fill all the required fields");
       return;
     }
-
-    if (!duration.match(/^\d+$/) || parseInt(duration) <= 0) {
+    const durationNum = parseInt(duration);
+    if (!duration.match(/^\d+$/) || durationNum <= 0) {
       Alert.alert("Invalid Input", "Duration must be a positive number");
       return;
     }
@@ -65,7 +66,7 @@ export default function AddActivity({ navigation }) {
       isSpecial,
     };
     // Add the new activity and navigate back
-    addActivity(newActivity);
+    writeToDB(newActivity, "activities")
     navigation.goBack();
   };
 
@@ -87,7 +88,7 @@ export default function AddActivity({ navigation }) {
       <Inputs
         value={duration}
         onChangeText={setDuration}
-        keyboardType="n umeric"
+        keyboardType="numeric"
         style={styles.input}
       />
       <Labels>Date *</Labels>

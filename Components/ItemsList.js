@@ -12,6 +12,8 @@ import { Ionicons } from "@expo/vector-icons";
 import { colorHelper } from "../Helper/colorHelper";
 import { fontHelper } from "../Helper/fontHelper";
 import { shapeHelper } from "../Helper/shapeHelper";
+import { collection, query, where, onSnapshot } from "firebase/firestore";
+import { database } from "../Firebase/fireBaseSetup";
 
 export default function ItemsList({ type }) {
   const { activities, diets } = useContext(DataContext);

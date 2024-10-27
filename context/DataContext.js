@@ -15,7 +15,7 @@ export const DataProvider = ({ children }) => {
   const [diets, setDiets] = useState([]);
   /**
    * Adds a new activity to the activities list
-   * @param {Object} activity - The activity object to be added
+   * @param {Object} activity - oThe activity object to be added
    */
   const addActivity = (activity) => {
     setActivities([...activities, activity]);

@@ -15,6 +15,7 @@ import ButtonSet from "../Components/ButtonSet";
 import { shapeHelper } from "../Helper/shapeHelper";
 import PressableButton from "../Components/PressableButton";
 import { colorHelper } from "../Helper/colorHelper";
+import { writeToDB } from "../Firebase/firestoreHelper";
 
 export default function AddDiet({ navigation }) {
   const [description, setDescription] = useState("");
@@ -23,7 +24,7 @@ export default function AddDiet({ navigation }) {
   const [showDatePicker, setShowDatePicker] = useState(false);
   const { theme } = useTheme();
 
-  const { addDiet } = useContext(DataContext);
+  // const { addDiet } = useContext(DataContext);
 
   /**
    * Handles saving the new diet entry
@@ -53,7 +54,9 @@ export default function AddDiet({ navigation }) {
     };
 
     // Add the new diet entry and navigate back
-    addDiet(newDietEntry);
+    // addDiet(newDietEntry);
+    writeToDB(newDietEntry, "diets")
+
     navigation.goBack();
   };
 
