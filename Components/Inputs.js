@@ -8,6 +8,7 @@ import { StyleSheet, View, TextInput } from "react-native";
 import React from "react";
 import { colorHelper } from "../Helper/colorHelper";
 import { shapeHelper } from "../Helper/shapeHelper";
+import { useTheme } from "../context/ThemeContext";
 
 export default function Inputs({
   value,
@@ -16,13 +17,16 @@ export default function Inputs({
   onFocus,
   onBlur,
 }) {
+
+  const { theme } = useTheme();
+
   return (
     <View>
       <TextInput
         value={value}
         onChangeText={onChangeText}
         keyboardType={keyboardType}
-        style={styles.input}
+        style={[styles.input, {borderColor: theme.borderColor}]}
         onBlur={onBlur}
         onFocus={onFocus}
       />
@@ -33,7 +37,6 @@ export default function Inputs({
 const styles = StyleSheet.create({
   input: {
     borderWidth: 1.5,
-    borderColor: colorHelper.background.primary,
     padding: shapeHelper.padding.mainPage,
     marginBottom: 10,
     backgroundColor: colorHelper.background.input,

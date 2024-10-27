@@ -13,6 +13,7 @@ import { shapeHelper } from "../Helper/shapeHelper";
 import PressableButton from "../Components/PressableButton";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import { mainStyle } from "../Components/CommonStyle";
 
 export default function Diet({ navigation }) {
   const { theme } = useTheme();
@@ -46,12 +47,5 @@ export default function Diet({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: shapeHelper.padding.mainPage,
-  },
-  icon: {
-    flexDirection: "row",
-    gap: 2,
-  },
+  ...mainStyle,
 });

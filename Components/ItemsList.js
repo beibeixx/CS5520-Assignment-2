@@ -35,9 +35,9 @@ export default function ItemsList({ type, navigation }) {
 
   function handlePress(item) {
     if (type === "activities") {
-      navigation.navigate("Modify Activity", {activity: item})
+      navigation.navigate("Modify Activity", { activity: item });
     } else if (type === "diets") {
-      navigation.navigate("Modify Diet", {diet: item})
+      navigation.navigate("Modify Diet", { diet: item });
     }
   }
 
@@ -48,34 +48,34 @@ export default function ItemsList({ type, navigation }) {
       keyExtractor={(item) => item.id.toString()}
       renderItem={({ item }) => (
         <Pressable onPress={() => handlePress(item)}>
-        <View style={styles.item}>
-          <View style={styles.itemLeft}>
-            <Text style={styles.itemTitle}>
-              {type === "activities" ? item.title : item.description}
-            </Text>
-          </View>
-          <View style={styles.itemRight}>
-            {item.isSpecial && (
-              <Ionicons
-                name="warning"
-                size={24}
-                color={colorHelper.text.selected}
-              />
-            )}
-            <View style={styles.itemDateContainer}>
-              <Text style={styles.itemDate}>
-                {new Date(item.date).toDateString()}
+          <View style={styles.item}>
+            <View style={styles.itemLeft}>
+              <Text style={styles.itemTitle}>
+                {type === "activities" ? item.title : item.description}
               </Text>
             </View>
-            <View style={styles.itemDetailContainer}>
-              <Text style={styles.itemDetail}>
-                {type === "activities"
-                  ? `${item.duration} min`
-                  : `${item.calories}`}
-              </Text>
+            <View style={styles.itemRight}>
+              {item.isSpecial && (
+                <Ionicons
+                  name="warning"
+                  size={24}
+                  color={colorHelper.text.selected}
+                />
+              )}
+              <View style={styles.itemDateContainer}>
+                <Text style={styles.itemDate}>
+                  {new Date(item.date).toDateString()}
+                </Text>
+              </View>
+              <View style={styles.itemDetailContainer}>
+                <Text style={styles.itemDetail}>
+                  {type === "activities"
+                    ? `${item.duration} min`
+                    : `${item.calories}`}
+                </Text>
+              </View>
             </View>
           </View>
-        </View>
         </Pressable>
       )}
     />

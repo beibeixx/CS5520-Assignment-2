@@ -19,6 +19,7 @@ export const ThemeProvider = ({ children }) => {
   const theme = {
     backgroundColor: isToggle ? colorHelper.background.pageChange : colorHelper.background.page,
     textColor: isToggle ? colorHelper.text.header : colorHelper.background.primary,
+    borderColor: isToggle? colorHelper.text.header : colorHelper.background.primary,
   };
 
   return (

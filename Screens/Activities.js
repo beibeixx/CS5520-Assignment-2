@@ -12,6 +12,7 @@ import { shapeHelper } from "../Helper/shapeHelper";
 import PressableButton from "../Components/PressableButton";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
+import { mainStyle } from "../Components/CommonStyle";
 
 export default function Activities({ navigation }) {
   const { theme } = useTheme();
@@ -50,12 +51,5 @@ export default function Activities({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: shapeHelper.padding.mainPage,
-  },
-  icon: {
-    flexDirection: "row",
-    gap: 2,
-  },
+  ...mainStyle,
 });

@@ -11,18 +11,15 @@ import { useTheme } from "../context/ThemeContext";
 import Inputs from "../Components/Inputs";
 import Labels from "../Components/Labels";
 import ButtonSet from "../Components/ButtonSet";
-import { shapeHelper } from "../Helper/shapeHelper";
 import PressableButton from "../Components/PressableButton";
-import { colorHelper } from "../Helper/colorHelper";
 import {
   deleteFromDB,
   updateInDB,
   writeToDB,
 } from "../Firebase/firestoreHelper";
-import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 import Checkbox from "expo-checkbox";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import { fontHelper } from "../Helper/fontHelper";
+import { modifyStyle } from "../Components/CommonStyle";
 
 export default function ModifyDiet({ navigation, route }) {
   const isEditMode = route.params?.diet !== undefined;
@@ -192,35 +189,5 @@ export default function ModifyDiet({ navigation, route }) {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: shapeHelper.padding.addPage,
-  },
-  cancelButton: {
-    backgroundColor: colorHelper.button.cancel,
-  },
-  saveButton: {
-    backgroundColor: colorHelper.button.save,
-  },
-  cancelButton: {
-    backgroundColor: colorHelper.button.cancel,
-    flex: 1,
-  },
-  saveButton: {
-    flex: 1,
-    backgroundColor: colorHelper.button.save,
-  },
-  checkboxContainer: {
-    flexDirection: "row",
-    gap: 20,
-    paddingHorizontal: 5,
-  },
-  checkboxText: {
-    color: colorHelper.text.updateSpecial,
-    fontWeight: fontHelper.style.bold,
-  },
-  bottomContainer:{
-    paddingTop:250,
-    gap: 10,
-  },
+  ...modifyStyle,
 });
