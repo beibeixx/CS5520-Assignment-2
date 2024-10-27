@@ -5,7 +5,7 @@
  * functionality to add new diet entries.
  */
 
-import { StyleSheet, View, Button } from "react-native";
+import { StyleSheet, View } from "react-native";
 import React, { useEffect } from "react";
 import ItemsList from "../Components/ItemsList";
 import { useTheme } from "../context/ThemeContext";
@@ -40,7 +40,7 @@ export default function Diet({ navigation }) {
       style={[styles.container, { backgroundColor: theme.backgroundColor }]}
     >
       {/* Render the list of diet entries */}
-      <ItemsList type="diet" />
+      <ItemsList type="diets" />
     </View>
   );
 }
@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
     padding: shapeHelper.padding.mainPage,
   },
   icon: {
-    flexDirection: 'row',
+    flexDirection: "row",
     gap: 2,
-  }
+  },
 });

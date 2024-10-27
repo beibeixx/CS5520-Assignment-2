@@ -4,9 +4,8 @@
  * This component provides a form for adding new diet entries,
  * including description, calories, and date.
  */
-import { StyleSheet, View, Button, Alert } from "react-native";
-import React, { useState, useContext } from "react";
-import { DataContext } from "../context/DataContext";
+import { StyleSheet, View, Alert } from "react-native";
+import React, { useState } from "react";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { useTheme } from "../context/ThemeContext";
 import Inputs from "../Components/Inputs";
@@ -23,8 +22,6 @@ export default function AddDiet({ navigation }) {
   const [date, setDate] = useState(null);
   const [showDatePicker, setShowDatePicker] = useState(false);
   const { theme } = useTheme();
-
-  // const { addDiet } = useContext(DataContext);
 
   /**
    * Handles saving the new diet entry
@@ -54,8 +51,7 @@ export default function AddDiet({ navigation }) {
     };
 
     // Add the new diet entry and navigate back
-    // addDiet(newDietEntry);
-    writeToDB(newDietEntry, "diets")
+    writeToDB(newDietEntry, "diets");
 
     navigation.goBack();
   };
@@ -103,8 +99,16 @@ export default function AddDiet({ navigation }) {
       )}
 
       <ButtonSet>
-        <PressableButton title="Cancel" onPress={() => navigation.goBack()} componentStyle={styles.cancelButton} />
-        <PressableButton title="Save" onPress={handleSave} componentStyle={styles.saveButton} />
+        <PressableButton
+          title="Cancel"
+          onPress={() => navigation.goBack()}
+          componentStyle={styles.cancelButton}
+        />
+        <PressableButton
+          title="Save"
+          onPress={handleSave}
+          componentStyle={styles.saveButton}
+        />
       </ButtonSet>
     </View>
   );

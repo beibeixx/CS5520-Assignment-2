@@ -4,9 +4,8 @@
  * This component provides a form for adding new activities,
  * including activity type, duration, and date.
  */
-import { StyleSheet, View, Button, Alert } from "react-native";
-import React, { useState, useContext } from "react";
-import { DataContext } from "../context/DataContext";
+import { StyleSheet, View, Alert } from "react-native";
+import React, { useState } from "react";
 import DropDownPicker from "react-native-dropdown-picker";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { colorHelper } from "../Helper/colorHelper";
@@ -17,7 +16,6 @@ import ButtonSet from "../Components/ButtonSet";
 import { shapeHelper } from "../Helper/shapeHelper";
 import PressableButton from "../Components/PressableButton";
 import { writeToDB } from "../Firebase/firestoreHelper";
-import { database } from "../Firebase/fireBaseSetup";
 
 
 // Define available activity types

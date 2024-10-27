@@ -6,19 +6,31 @@
  * date, duration/calories, and a warning icon for special items.
  */
 import { StyleSheet, Text, View, FlatList } from "react-native";
-import React, { useContext } from "react";
-import { DataContext } from "../context/DataContext";
+import React, { useState, useEffect } from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { colorHelper } from "../Helper/colorHelper";
 import { fontHelper } from "../Helper/fontHelper";
 import { shapeHelper } from "../Helper/shapeHelper";
-import { collection, query, where, onSnapshot } from "firebase/firestore";
+import { collection, onSnapshot } from "firebase/firestore";
 import { database } from "../Firebase/fireBaseSetup";
 
 export default function ItemsList({ type }) {
-  const { activities, diets } = useContext(DataContext);
+  const [data, setData] = useState([]);
 
-  const data = type === "activities" ? activities : diets;
+  useEffect(() => {
+    const listerToFirebase = onSnapshot(
+      collection(database, type),
+      (querySnapshot) => {
+        let newData = [];
+        querySnapshot.forEach((docSnapshot) => {
+          newData.push({ ...docSnapshot.data(), id: docSnapshot.id });
+        });
+        setData(newData);
+      }
+    );
+
+    return () => listerToFirebase();
+  }, [type]);
 
   return (
     <FlatList
