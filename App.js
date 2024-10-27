@@ -12,7 +12,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import MyTab from "./MyTab";
 import ModifyActivities from "./Screens/ModifyActivities";
 import { colorHelper } from "./Helper/colorHelper";
-import AddDiet from "./Screens/AddDiet";
+import ModifyDiet from "./Screens/ModifyDiet";
 import { ThemeProvider } from "./context/ThemeContext";
 
 export default function App() {
@@ -48,8 +48,8 @@ export default function App() {
           {/* Add Diet Entry Screen */}
 
           <Stack.Screen
-            name="Add A Diet Entry"
-            component={AddDiet}
+            name="Modify Diet"
+            component={ModifyDiet}
             options={({ route }) => ({
               headerStyle: {
                 backgroundColor: colorHelper.background.primary,

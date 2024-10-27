@@ -36,6 +36,8 @@ export default function ItemsList({ type, navigation }) {
   function handlePress(item) {
     if (type === "activities") {
       navigation.navigate("Modify Activity", {activity: item})
+    } else if (type === "diets") {
+      navigation.navigate("Modify Diet", {diet: item})
     }
   }
 

@@ -21,7 +21,7 @@ export default function Diet({ navigation }) {
    * Handles navigation to the "Add A Diet Entry" screen
    */
   function handleAddDiet() {
-    navigation.navigate("Add A Diet Entry");
+    navigation.navigate("Modify Diet");
   }
   // Set up the "Add" button in the navigation header
   useEffect(() => {
@@ -40,7 +40,7 @@ export default function Diet({ navigation }) {
       style={[styles.container, { backgroundColor: theme.backgroundColor }]}
     >
       {/* Render the list of diet entries */}
-      <ItemsList type="diets" />
+      <ItemsList type="diets" navigation={navigation} />
     </View>
   );
 }
