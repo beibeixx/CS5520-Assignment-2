@@ -5,7 +5,7 @@
  * using FlatList. It displays details such as title/description,
  * date, duration/calories, and a warning icon for special items.
  */
-import { StyleSheet, Text, View, FlatList } from "react-native";
+import { StyleSheet, Text, View, FlatList, Pressable } from "react-native";
 import React, { useState, useEffect } from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { colorHelper } from "../Helper/colorHelper";
@@ -13,8 +13,9 @@ import { fontHelper } from "../Helper/fontHelper";
 import { shapeHelper } from "../Helper/shapeHelper";
 import { collection, onSnapshot } from "firebase/firestore";
 import { database } from "../Firebase/fireBaseSetup";
+import PressableButton from "./PressableButton";
 
-export default function ItemsList({ type }) {
+export default function ItemsList({ type, navigation }) {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -32,12 +33,19 @@ export default function ItemsList({ type }) {
     return () => listerToFirebase();
   }, [type]);
 
+  function handlePress(item) {
+    if (type === "activities") {
+      navigation.navigate("Modify Activity", {activity: item})
+    }
+  }
+
   return (
     <FlatList
       data={data}
       contentContainerStyle={styles.listContainer}
       keyExtractor={(item) => item.id.toString()}
       renderItem={({ item }) => (
+        <Pressable onPress={() => handlePress(item)}>
         <View style={styles.item}>
           <View style={styles.itemLeft}>
             <Text style={styles.itemTitle}>
@@ -66,6 +74,7 @@ export default function ItemsList({ type }) {
             </View>
           </View>
         </View>
+        </Pressable>
       )}
     />
   );

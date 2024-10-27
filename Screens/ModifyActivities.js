@@ -1,11 +1,11 @@
 /**
- * AddActivity.js
+ * ModifyActivities.js
  *
  * This component provides a form for adding new activities,
  * including activity type, duration, and date.
  */
 import { StyleSheet, View, Alert } from "react-native";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import DropDownPicker from "react-native-dropdown-picker";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { colorHelper } from "../Helper/colorHelper";
@@ -16,8 +16,7 @@ import ButtonSet from "../Components/ButtonSet";
 import { shapeHelper } from "../Helper/shapeHelper";
 import PressableButton from "../Components/PressableButton";
 import { writeToDB } from "../Firebase/firestoreHelper";
-
-
+import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 // Define available activity types
 const activityTypes = [
   { label: "Walking", value: "Walking" },
@@ -29,13 +28,32 @@ const activityTypes = [
   { label: "Hiking", value: "Hiking" },
 ];
 
-export default function AddActivity({ navigation }) {
+export default function ModifyActivities({ navigation, route }) {
   const [open, setOpen] = useState(false);
   const [activType, setActivType] = useState(null);
   const [duration, setDuration] = useState("");
   const [date, setDate] = useState(null);
   const [showDatePicker, setShowDatePicker] = useState(false);
   const { theme } = useTheme();
+
+  const isEditMode = route.params?.activity !== undefined;
+  const initialActivity = route.params?.activity !== null;
+
+  useEffect(() => {
+    navigation.setOptions({
+      title: isEditMode ? "Edit" : "Add An Activity",
+      headerRight: isEditMode
+        ? () => (
+            <PressableButton onPress={handleDelete}>
+              <FontAwesome5 name="trash" size={24} color="white" />
+            </PressableButton>
+          )
+        : undefined,
+        headerRightContainerStyle: {
+          paddingRight: 15  // match Tab Navigator default padding
+        }
+    });
+  }, [isEditMode]);
 
   /**
    * Handles saving the new activity
@@ -64,9 +82,11 @@ export default function AddActivity({ navigation }) {
       isSpecial,
     };
     // Add the new activity and navigate back
-    writeToDB(newActivity, "activities")
+    writeToDB(newActivity, "activities");
     navigation.goBack();
   };
+
+  function handleDelete() {}
 
   return (
     <View
@@ -113,8 +133,16 @@ export default function AddActivity({ navigation }) {
         />
       )}
       <ButtonSet>
-        <PressableButton title="Cancel" onPress={() => navigation.goBack()} componentStyle={styles.cancelButton}/>
-        <PressableButton title="Save" onPress={handleSave} componentStyle={styles.saveButton} />
+        <PressableButton
+          title="Cancel"
+          onPress={() => navigation.goBack()}
+          componentStyle={styles.cancelButton}
+        />
+        <PressableButton
+          title="Save"
+          onPress={handleSave}
+          componentStyle={styles.saveButton}
+        />
       </ButtonSet>
     </View>
   );
@@ -131,8 +159,10 @@ const styles = StyleSheet.create({
   },
   cancelButton: {
     backgroundColor: colorHelper.button.cancel,
+    flex:1,
   },
   saveButton: {
+    flex:1,
     backgroundColor: colorHelper.button.save,
-  }
+  },
 });

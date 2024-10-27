@@ -10,7 +10,7 @@ import ItemsList from "../Components/ItemsList";
 import { useTheme } from "../context/ThemeContext";
 import { shapeHelper } from "../Helper/shapeHelper";
 import PressableButton from "../Components/PressableButton";
-import Ionicons from '@expo/vector-icons/Ionicons';
+import Ionicons from "@expo/vector-icons/Ionicons";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 
 export default function Activities({ navigation }) {
@@ -18,8 +18,8 @@ export default function Activities({ navigation }) {
   /**
    * Handles navigation to the "Add An Activity" screen
    */
-  function handleAddActivity() {
-    navigation.navigate("Add An Activity");
+  function handleModifyActivities() {
+    navigation.navigate("Modify Activity");
   }
 
   // Set up the "Add" button in the navigation header
@@ -27,10 +27,13 @@ export default function Activities({ navigation }) {
   useEffect(() => {
     navigation.setOptions({
       headerRight: () => (
-        <PressableButton onPress={handleAddActivity} componentStyle={styles.icon}>
+        <PressableButton
+          onPress={handleModifyActivities}
+          componentStyle={styles.icon}
+        >
           <Ionicons name="add-outline" size={24} color="white" />
           <FontAwesome5 name="running" size={24} color="white" />
-          </PressableButton>
+        </PressableButton>
       ),
     });
   }, []);
@@ -41,7 +44,7 @@ export default function Activities({ navigation }) {
     >
       {/* Render the list of activities */}
 
-      <ItemsList type="activities" />
+      <ItemsList type="activities" navigation={navigation} />
     </View>
   );
 }
@@ -52,7 +55,7 @@ const styles = StyleSheet.create({
     padding: shapeHelper.padding.mainPage,
   },
   icon: {
-    flexDirection: 'row',
+    flexDirection: "row",
     gap: 2,
-  }
+  },
 });

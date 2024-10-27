@@ -10,7 +10,7 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import MyTab from "./MyTab";
-import AddActivity from "./Screens/AddActivity";
+import ModifyActivities from "./Screens/ModifyActivities";
 import { colorHelper } from "./Helper/colorHelper";
 import AddDiet from "./Screens/AddDiet";
 import { ThemeProvider } from "./context/ThemeContext";
@@ -35,8 +35,8 @@ export default function App() {
           {/* Add Activity Screen */}
 
           <Stack.Screen
-            name="Add An Activity"
-            component={AddActivity}
+            name="Modify Activity"
+            component={ModifyActivities}
             options={({ route }) => ({
               headerStyle: {
                 backgroundColor: colorHelper.background.primary,

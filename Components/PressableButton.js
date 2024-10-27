@@ -29,7 +29,7 @@ export default function PressableButton({
 
 const styles = StyleSheet.create({
   button: {
-    flex:1,
+    // flex:1,
     paddingVertical: 10,
     paddingHorizontal: 10,
     borderRadius: 4,
