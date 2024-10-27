@@ -1,4 +1,4 @@
-import { collection, addDoc, getDocs } from "firebase/firestore";
+import { collection, addDoc, getDocs, setDoc, doc} from "firebase/firestore";
 import { database } from "./fireBaseSetup";
 
 export async function writeToDB(data, collectionName) {
@@ -24,4 +24,12 @@ export async function getAllDocuments(collectionName) {
     } catch (err) {
       console.log("get all docs", err);
     }
+}
+
+export async function updateInDB(newData, currentId, collectionName) {
+  try {
+    await setDoc(doc(database, collectionName, currentId), newData, {merge:currentId});
+  } catch (err) {
+    console.log(err);
+  }
 }
