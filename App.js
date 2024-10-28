@@ -10,10 +10,9 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import MyTab from "./MyTab";
-import { DataProvider } from "./context/DataContext";
-import AddActivity from "./Screens/AddActivity";
+import ModifyActivities from "./Screens/ModifyActivities";
 import { colorHelper } from "./Helper/colorHelper";
-import AddDiet from "./Screens/AddDiet";
+import ModifyDiet from "./Screens/ModifyDiet";
 import { ThemeProvider } from "./context/ThemeContext";
 
 export default function App() {
@@ -22,47 +21,45 @@ export default function App() {
   const Stack = createNativeStackNavigator();
   return (
     <ThemeProvider>
-      <DataProvider>
-        <NavigationContainer>
-          <Stack.Navigator>
-            {/* Home Screen */}
+      <NavigationContainer>
+        <Stack.Navigator>
+          {/* Home Screen */}
 
-            <Stack.Screen
-              name="Home"
-              component={MyTab}
-              options={{
-                headerShown: false,
-              }}
-            />
-            {/* Add Activity Screen */}
+          <Stack.Screen
+            name="Home"
+            component={MyTab}
+            options={{
+              headerShown: false,
+            }}
+          />
+          {/* Add Activity Screen */}
 
-            <Stack.Screen
-              name="Add An Activity"
-              component={AddActivity}
-              options={({ route }) => ({
-                headerStyle: {
-                  backgroundColor: colorHelper.background.primary,
-                },
-                headerTintColor: colorHelper.text.header,
-                headerBackTitleVisible: false,
-              })}
-            />
-            {/* Add Diet Entry Screen */}
+          <Stack.Screen
+            name="Modify Activity"
+            component={ModifyActivities}
+            options={({ route }) => ({
+              headerStyle: {
+                backgroundColor: colorHelper.background.primary,
+              },
+              headerTintColor: colorHelper.text.header,
+              headerBackTitleVisible: false,
+            })}
+          />
+          {/* Add Diet Entry Screen */}
 
-            <Stack.Screen
-              name="Add A Diet Entry"
-              component={AddDiet}
-              options={({ route }) => ({
-                headerStyle: {
-                  backgroundColor: colorHelper.background.primary,
-                },
-                headerTintColor: colorHelper.text.header,
-                headerBackTitleVisible: false,
-              })}
-            />
-          </Stack.Navigator>
-        </NavigationContainer>
-      </DataProvider>
+          <Stack.Screen
+            name="Modify Diet"
+            component={ModifyDiet}
+            options={({ route }) => ({
+              headerStyle: {
+                backgroundColor: colorHelper.background.primary,
+              },
+              headerTintColor: colorHelper.text.header,
+              headerBackTitleVisible: false,
+            })}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
     </ThemeProvider>
   );
 }

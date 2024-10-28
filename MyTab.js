@@ -54,13 +54,23 @@ export default function MyTab() {
             ? colorHelper.text.selected
             : colorHelper.text.unselected;
           if (route.name === "Activities") {
-            return <Text style={{ color, fontSize: fontHelper.size.tab }}>Activities</Text>;
+            return (
+              <Text style={{ color, fontSize: fontHelper.size.tab }}>
+                Activities
+              </Text>
+            );
           }
           if (route.name === "Diet") {
-            return <Text style={{ color, fontSize: fontHelper.size.tab }}>Diet</Text>;
+            return (
+              <Text style={{ color, fontSize: fontHelper.size.tab }}>Diet</Text>
+            );
           }
           if (route.name === "Settings") {
-            return <Text style={{ color, fontSize: fontHelper.size.tab }}>Settings</Text>;
+            return (
+              <Text style={{ color, fontSize: fontHelper.size.tab }}>
+                Settings
+              </Text>
+            );
           }
         },
       })}
