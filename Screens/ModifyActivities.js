@@ -51,6 +51,7 @@ export default function ModifyActivities({ navigation, route }) {
   const { theme } = useTheme();
   const [isChecked, setIsChecked] = useState(false);
 
+  // Add delete button for edit mode
   useEffect(() => {
     navigation.setOptions({
       title: isEditMode ? "Edit" : "Add An Activity",

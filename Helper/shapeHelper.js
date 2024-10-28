@@ -20,4 +20,9 @@ export const shapeHelper = {
     mid: 5, // Medium border radius
     small: 2, // Small border radius
   },
+
+  gap: {
+    stand: 20, // Stand gap
+    inner: 10, // Stand gap
+  }
 };

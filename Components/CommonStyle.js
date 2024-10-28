@@ -26,7 +26,7 @@ export const modifyStyle = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between", 
     flexDirection: "row",
-    gap: 10,
+    gap: shapeHelper.gap.inner,
     marginRight: 10,
   },
   checkboxText: {
@@ -34,7 +34,7 @@ export const modifyStyle = StyleSheet.create({
   },
   bottomContainer: {
     paddingTop: 250,
-    gap: 10,
+    gap: shapeHelper.gap.inner,
   },
   pressedDelete: {
     backgroundColor: colorHelper.button.delete,

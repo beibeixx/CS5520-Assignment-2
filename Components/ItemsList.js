@@ -60,7 +60,7 @@ export default function ItemsList({ type, navigation }) {
               {item.isSpecial && (
                 <Ionicons
                   name="warning"
-                  size={24}
+                  size={fontHelper.size.icon}
                   color={colorHelper.text.selected}
                 />
               )}

@@ -20,6 +20,8 @@ import {
 import Checkbox from "expo-checkbox";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { modifyStyle } from "../Components/CommonStyle";
+import { fontHelper } from "../Helper/fontHelper";
+import { colorHelper } from "../Helper/colorHelper";
 
 export default function ModifyDiet({ navigation, route }) {
   const isEditMode = route.params?.diet !== undefined;
@@ -38,13 +40,14 @@ export default function ModifyDiet({ navigation, route }) {
   const { theme } = useTheme();
   const [isChecked, setIsChecked] = useState(false);
 
+  // Add delete button for Edit mode
   useEffect(() => {
     navigation.setOptions({
       title: isEditMode ? "Edit" : "Add A Diet Entry",
       headerRight: isEditMode
         ? () => (
             <PressableButton onPress={handleDelete} pressedStyle={styles.pressedDelete}>
-              <Ionicons name="trash-outline" size={24} color="white" />
+              <Ionicons name="trash-outline" size={fontHelper.size.icon} color={colorHelper.button.text} />
             </PressableButton>
           )
         : undefined,
