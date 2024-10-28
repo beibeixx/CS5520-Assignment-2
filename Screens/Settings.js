@@ -24,6 +24,7 @@ export default function Settings() {
           title="Toggle Theme"
           onPress={toggleTheme}
           componentStyle={styles.toggleButton}
+          pressedStyle={styles.pressedStyle}
         />
       </View>
     </View>
@@ -44,4 +45,9 @@ const styles = StyleSheet.create({
   toggleButton: {
     backgroundColor: colorHelper.background.primary,
   },
+  pressedStyle: {
+    transform: [{ scale: 1.02 }],
+    borderColor: colorHelper.text.selected,
+    borderWidth: 1.5,
+  }
 });

@@ -47,8 +47,10 @@ export default function ItemsList({ type, navigation }) {
       contentContainerStyle={styles.listContainer}
       keyExtractor={(item) => item.id.toString()}
       renderItem={({ item }) => (
-        <Pressable onPress={() => handlePress(item)}>
-          <View style={styles.item}>
+        <Pressable onPress={() => handlePress(item)}
+        style={({ pressed }) => {
+          return [ styles.item, pressed && styles.pressedStyle];
+        }}>
             <View style={styles.itemLeft}>
               <Text style={styles.itemTitle}>
                 {type === "activities" ? item.title : item.description}
@@ -75,7 +77,6 @@ export default function ItemsList({ type, navigation }) {
                 </Text>
               </View>
             </View>
-          </View>
         </Pressable>
       )}
     />
@@ -133,4 +134,9 @@ const styles = StyleSheet.create({
     borderRadius: shapeHelper.borderRadius.small,
     width: 70,
   },
+  pressedStyle: {
+    transform: [{ scale: 1.02 }],
+    borderColor: colorHelper.text.selected,
+    borderWidth: 1.5,
+  }
 });

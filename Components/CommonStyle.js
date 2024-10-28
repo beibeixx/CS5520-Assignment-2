@@ -23,21 +23,23 @@ export const modifyStyle = StyleSheet.create({
     backgroundColor: colorHelper.button.save,
   },
   checkboxContainer: {
+    alignItems: "center",
+    justifyContent: "space-between", 
     flexDirection: "row",
-    gap: 20,
-    paddingRight: 10,
+    gap: 10,
+    marginRight: 10,
   },
   checkboxText: {
-    color: colorHelper.text.updateSpecial,
     fontWeight: fontHelper.style.bold,
   },
   bottomContainer: {
     paddingTop: 250,
     gap: 10,
   },
+  pressedDelete: {
+    backgroundColor: colorHelper.button.delete,
+  },
 });
-
-
 
 export const mainStyle = StyleSheet.create({
   container: {
@@ -47,5 +49,8 @@ export const mainStyle = StyleSheet.create({
   icon: {
     flexDirection: "row",
     gap: 2,
+  },
+  pressIcon: {
+    backgroundColor: colorHelper.text.selected,
   },
 });

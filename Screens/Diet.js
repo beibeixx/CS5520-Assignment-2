@@ -14,6 +14,8 @@ import PressableButton from "../Components/PressableButton";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { mainStyle } from "../Components/CommonStyle";
+import { fontHelper } from "../Helper/fontHelper";
+import { colorHelper } from "../Helper/colorHelper";
 
 export default function Diet({ navigation }) {
   const { theme } = useTheme();
@@ -28,9 +30,21 @@ export default function Diet({ navigation }) {
   useEffect(() => {
     navigation.setOptions({
       headerRight: () => (
-        <PressableButton onPress={handleAddDiet} componentStyle={styles.icon}>
-          <Ionicons name="add-outline" size={24} color="white" />
-          <MaterialCommunityIcons name="food" size={24} color="white" />
+        <PressableButton
+          onPress={handleAddDiet}
+          componentStyle={styles.icon}
+          pressedStyle={styles.pressIcon}
+        >
+          <Ionicons
+            name="add-outline"
+            size={fontHelper.size.icon}
+            color={colorHelper.button.text}
+          />
+          <MaterialCommunityIcons
+            name="food"
+            size={fontHelper.size.icon}
+            color={colorHelper.button.text}
+          />
         </PressableButton>
       ),
     });

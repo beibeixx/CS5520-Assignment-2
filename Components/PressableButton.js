@@ -15,33 +15,32 @@ export default function PressableButton({
       style={({ pressed }) => [
         componentStyle,
         styles.button,
+        pressed && pressedStyle,
         pressed && styles.pressedStyle,
       ]}
       android_ripple={{
         color: colorHelper.background.pageChange,
-        borderless: false,
+        radius: 20,
       }}
     >
       <Text style={styles.text}>{title || children}</Text>
-      </Pressable>
+    </Pressable>
   );
 }
 
 const styles = StyleSheet.create({
   button: {
-    // flex:1,
     paddingVertical: 10,
     paddingHorizontal: 10,
     borderRadius: 4,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
-
-text: {
-  color: colorHelper.button.text,
-},
+  text: {
+    color: colorHelper.button.text,
+  },
   pressedStyle: {
-    // backgroundColor: '#1976D2',
+    opacity: 0.7,
+    transform: [{ scale: 0.98 }],
   },
-
 });

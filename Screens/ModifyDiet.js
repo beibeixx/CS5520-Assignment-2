@@ -43,7 +43,7 @@ export default function ModifyDiet({ navigation, route }) {
       title: isEditMode ? "Edit" : "Add A Diet Entry",
       headerRight: isEditMode
         ? () => (
-            <PressableButton onPress={handleDelete}>
+            <PressableButton onPress={handleDelete} pressedStyle={styles.pressedDelete}>
               <Ionicons name="trash-outline" size={24} color="white" />
             </PressableButton>
           )

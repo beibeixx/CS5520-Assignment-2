@@ -22,6 +22,7 @@ import {
 import Checkbox from "expo-checkbox";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { modifyStyle } from "../Components/CommonStyle";
+import { fontHelper } from "../Helper/fontHelper";
 
 // Define available activity types
 const activityTypes = [
@@ -55,8 +56,8 @@ export default function ModifyActivities({ navigation, route }) {
       title: isEditMode ? "Edit" : "Add An Activity",
       headerRight: isEditMode
         ? () => (
-            <PressableButton onPress={handleDelete}>
-              <Ionicons name="trash-outline" size={24} color="white" />
+            <PressableButton onPress={handleDelete} pressedStyle={styles.pressedDelete}>
+              <Ionicons name="trash-outline" size={fontHelper.size.icon} color={colorHelper.button.text} />
             </PressableButton>
           )
         : undefined,
@@ -185,7 +186,7 @@ export default function ModifyActivities({ navigation, route }) {
       <View style={styles.bottomContainer}>
         {isEditMode && currentActivity.isSpecial && (
           <View style={styles.checkboxContainer}>
-            <Text style={styles.checkboxText}>
+            <Text style={[styles.checkboxText, {color: theme.textColor}]}>
               This item is marked as special. Select the checkbox if you would
               like to approve it.
             </Text>

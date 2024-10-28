@@ -13,6 +13,8 @@ import PressableButton from "../Components/PressableButton";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 import { mainStyle } from "../Components/CommonStyle";
+import { fontHelper } from "../Helper/fontHelper";
+import { colorHelper } from "../Helper/colorHelper";
 
 export default function Activities({ navigation }) {
   const { theme } = useTheme();
@@ -31,9 +33,18 @@ export default function Activities({ navigation }) {
         <PressableButton
           onPress={handleModifyActivities}
           componentStyle={styles.icon}
+          pressedStyle={styles.pressIcon}
         >
-          <Ionicons name="add-outline" size={24} color="white" />
-          <FontAwesome5 name="running" size={24} color="white" />
+          <Ionicons
+            name="add-outline"
+            size={fontHelper.size.icon}
+            color={colorHelper.button.text}
+          />
+          <FontAwesome5
+            name="running"
+            size={fontHelper.size.icon}
+            color={colorHelper.button.text}
+          />
         </PressableButton>
       ),
     });
