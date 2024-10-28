@@ -46,8 +46,15 @@ export default function ModifyDiet({ navigation, route }) {
       title: isEditMode ? "Edit" : "Add A Diet Entry",
       headerRight: isEditMode
         ? () => (
-            <PressableButton onPress={handleDelete} pressedStyle={styles.pressedDelete}>
-              <Ionicons name="trash-outline" size={fontHelper.size.icon} color={colorHelper.button.text} />
+            <PressableButton
+              onPress={handleDelete}
+              pressedStyle={styles.pressedDelete}
+            >
+              <Ionicons
+                name="trash-outline"
+                size={fontHelper.size.icon}
+                color={colorHelper.button.text}
+              />
             </PressableButton>
           )
         : undefined,
@@ -167,7 +174,7 @@ export default function ModifyDiet({ navigation, route }) {
       <View style={styles.bottomContainer}>
         {isEditMode && currentDiet.isSpecial && (
           <View style={styles.checkboxContainer}>
-            <Text style={styles.checkboxText}>
+            <Text style={[styles.checkboxText, { color: theme.textColor }]}>
               This item is marked as special. Select the checkbox if you would
               like to approve it.
             </Text>

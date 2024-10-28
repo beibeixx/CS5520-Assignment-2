@@ -57,8 +57,15 @@ export default function ModifyActivities({ navigation, route }) {
       title: isEditMode ? "Edit" : "Add An Activity",
       headerRight: isEditMode
         ? () => (
-            <PressableButton onPress={handleDelete} pressedStyle={styles.pressedDelete}>
-              <Ionicons name="trash-outline" size={fontHelper.size.icon} color={colorHelper.button.text} />
+            <PressableButton
+              onPress={handleDelete}
+              pressedStyle={styles.pressedDelete}
+            >
+              <Ionicons
+                name="trash-outline"
+                size={fontHelper.size.icon}
+                color={colorHelper.button.text}
+              />
             </PressableButton>
           )
         : undefined,
@@ -150,7 +157,7 @@ export default function ModifyActivities({ navigation, route }) {
         items={activityTypes}
         setOpen={setOpen}
         setValue={setActivType}
-        style={[styles.dropdown, {borderColor: theme.borderColor}]}
+        style={[styles.dropdown, { borderColor: theme.borderColor }]}
         placeholder="Select an Activity"
       />
       <Labels>Duration (min) *</Labels>
@@ -187,7 +194,7 @@ export default function ModifyActivities({ navigation, route }) {
       <View style={styles.bottomContainer}>
         {isEditMode && currentActivity.isSpecial && (
           <View style={styles.checkboxContainer}>
-            <Text style={[styles.checkboxText, {color: theme.textColor}]}>
+            <Text style={[styles.checkboxText, { color: theme.textColor }]}>
               This item is marked as special. Select the checkbox if you would
               like to approve it.
             </Text>
